@@ -282,7 +282,7 @@ input:read-only {
     }
     @media only screen and (max-width: 776px){
         .logoForm{
-            width: 100%;
+            width: 40%;
         }
       .entry-form{
         width: 100%;
