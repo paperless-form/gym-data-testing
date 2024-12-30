@@ -5,7 +5,7 @@ input:read-only {
   background-color: #d9d9d9 !important;
 }
 .logoForm {
-    width: 30%;
+    width: 25%;
     display: block;
     margin: 0px auto;
     margin-bottom: 20px;
@@ -64,7 +64,7 @@ input:read-only {
       margin: 0 auto;
     }
     .bgSquare{
-      background: #285475;
+      background: #ee5023;
       height: 770px;
       width: 70%;
       /* display: flex; */
