@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Client Data</title>
+  <title>Area Sports</title>
   <meta charset="utf-8">
   <link rel="manifest" href="assets/site.webmanifest">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,12 +11,18 @@
   <link rel="stylesheet" type="text/css" href="assets/css/customStyle.css?v=1.0">
     <style>
       h1 {
-        color: #250694;
+        color: #285475;
         font-size: 5rem;
         text-align: center;
       }
       .bgSquare{
         height: 215px;
+      }
+      .bg-theme{
+        background-color: #285475;
+      }
+      .fw-b{
+        font-weight: bold;
       }
     </style>
 </head>
@@ -28,7 +34,7 @@
     <div class="bgSquare"></div>
     <div class="entry-form" id="entry-form">
       <div class="col-md-12">
-        <img class="logoForm" src="./assets/images/company-logo.png" alt=""> 
+        <h1>Area Sports</h1>
       </div>
       
       <form action="https://script.google.com/macros/s/AKfycbwsG_udq5z9GwE1EcDvAN28280UN8aQ-EdSoIwJVglpW5VbCESV6OXuph5ayFTwQt_DGw/exec" method="POST" id="formValues">
@@ -52,28 +58,6 @@
           </div>
         </div>
         <div class="row login-depend d-none">
-          <h1 class="not-found"></h1>
-          <h3 class="user-name">User name</h3>
-          <div class="col-12">
-            <table class="form-tabel">
-              <thead>
-                  <tr>
-                      <th width="20%">Exercises</th>
-                      <th width="10%">Sets</th>
-                      <th width="20%">Reps</th>
-                      <th width="20%">Set/ W1</th>
-                      <th width="10%">Set/ W2</th>
-                      <th width="10%">Set/ W3</th>
-                      <th width="10%">Set/ W4</th>
-                      <th width="10%">Set/ W5</th>
-                      <th width="10%">Set/ W6</th>
-                      <th width="10%">Set/ W7</th>
-                      <th width="10%">Set/ W8</th>
-                  </tr>
-              </thead>
-              <tbody class="products"></tbody>
-            </table>
-          </div>
         </div>
       </form>
     </div>
@@ -92,65 +76,42 @@
   {
     if(data.length > 0)
     {
-      $('.not-found').empty()
-      $('.user-name').empty()
-      $('.user-name').append("Data of "+data[0][0])
-      $('.form-tabel').empty()
-      $('.form-tabel').append(`
-      <tbody>
-        <tr>
-          <th width="20%">Exercises</th>
-          <td>`+data[0][1]+`</td>
-        </tr>
-        <tr>
-          <th width="10%">Sets</th>
-          <td>`+data[0][2]+`</td>
-        </tr>
-        <tr>
-          <th width="20%">Reps</th>
-          <td>`+data[0][3]+`</td>
-        </tr>
-        <tr>
-          <th width="20%">Set/ W1</th>
-          <td>`+data[0][4]+`</td>
-        </tr>
-        <tr>
-          <th width="10%">Set/ W2</th>
-          <td>`+data[0][5]+`</td>
-        </tr>
-        <tr>
-          <th width="10%">Set/ W3</th>
-          <td>`+data[0][6]+`</td>
-        </tr>
-        <tr>
-          <th width="10%">Set/ W4</th>
-          <td>`+data[0][7]+`</td>
-        </tr>
-        <tr>
-          <th width="10%">Set/ W5</th>
-          <td>`+data[0][8]+`</td>
-        </tr>
-        <tr>
-          <th width="10%">Set/ W6</th>
-          <td>`+data[0][9]+`</td>
-        </tr>
-        <tr>
-          <th width="10%">Set/ W7</th>
-          <td>`+data[0][10]+`</td>
-        </tr>
-        <tr>
-          <th width="10%">Set/ W8</th>
-          <td>`+data[0][11]+`</td>
-        </tr>
-      </tbody>
+      $('.login-depend').empty()
+      $('.login-depend').append(`
+      <h3 class="user-name">Rutima client `+data[0][0]+`</h3>`)
+      for(var i=0; i<data.length; i++)
+    {
+      $('.login-depend').append(`
+      <div class="col-12 bg-theme text-center my-3">
+        <h3 class="text-white"> Exercise: ${data[i][1] != "" ? data[i][1] : "<b>-</b>"}</h3>
+      </div>
+      <div class="col-6 fw-b">Sets</div>
+      <div class="col-6">${data[i][2] != "" ? data[i][2] : "<b>-</b>"}</div>
+      <div class="col-6 fw-b">Reps</div>
+      <div class="col-6">${data[i][3] != "" ? data[i][3] : "<b>-</b>"}</div>
+      <div class="col-6 fw-b">Set/ W1</div>
+      <div class="col-6">${data[i][4] != "" ? data[i][4] : "<b>-</b>"}</div>
+      <div class="col-6 fw-b">Set/ W2</div>
+      <div class="col-6">${data[i][5] != "" ? data[i][5] : "<b>-</b>"}</div>
+      <div class="col-6 fw-b">Set/ W3</div>
+      <div class="col-6">${data[i][6] != "" ? data[i][6] : "<b>-</b>"}</div>
+      <div class="col-6 fw-b">Set/ W4</div>
+      <div class="col-6">${data[i][7] != "" ? data[i][7] : "<b>-</b>"}</div>
+      <div class="col-6 fw-b">Set/ W5</div>
+      <div class="col-6">${data[i][8] != "" ? data[i][8] : "<b>-</b>"}</div>
+      <div class="col-6 fw-b">Set/ W6</div>
+      <div class="col-6">${data[i][9] != "" ? data[i][9] : "<b>-</b>"}</div>
+      <div class="col-6 fw-b">Set/ W7</div>
+      <div class="col-6">${data[i][10] != "" ? data[i][10] : "<b>-</b>"}</div>
+      <div class="col-6 fw-b">Set/ W8</div>
+      <div class="col-6">${data[i][11] != "" ? data[i][11] : "<b>-</b>"}</div>
       `)
+    }
     }
     else
     {
-      $('.not-found').empty()
-      $('.user-name').empty()
-      $('.not-found').append("Data not found")
-      $('.form-tabel').empty()
+      $('.login-depend').empty()
+      $('.login-depend').append('<h1 class="not-found">Data not found</h1>Data not found')
     }
     
   }
