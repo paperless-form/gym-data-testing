@@ -28,32 +28,6 @@
       .fw-b{
         font-weight: bold;
       }
-
-      .floating-logo {
-        animation: float 3s ease-in-out infinite;
-  display: inline-block;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2); /* Adds 3D shadow effect */
-  border-radius: 50%;
-}
-
-/* Keyframes for floating effect */
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px); /* Adjust for how much it moves up */
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.center-div {
-  display: flex;
-  justify-content: center; /* Horizontal centering */
-  align-items: center; /* Vertical centering */
-}
     </style>
 </head>
 <body>
@@ -63,8 +37,8 @@
   <div class="container">
     <div class="bgSquare"></div>
     <div class="entry-form" id="entry-form">
-      <div class="col-md-12 center-div">
-        <img class="logoForm floating-logo" src="./assets/images/company-logo.jpg" alt="company logo">
+      <div class="col-md-12">
+        <img class="logoForm" src="./assets/images/owner.jpg" alt="company logo">
         
       </div>
       <h3>Add User Exercise</h3>
@@ -176,6 +150,7 @@ function appendData(exercises, users)
                 appendData(response.exercises, response.users)
                 $('.btn-submit').removeAttr('disabled')
                 $('.check-user').val('no')
+                $('.logoForm').attr("src","./assets/images/company-logo.jpg")
             }
             else if(response.result == "not match")
             {
