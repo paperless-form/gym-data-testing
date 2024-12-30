@@ -27,6 +27,30 @@
       .fw-b{
         font-weight: bold;
       }
+
+      .floating-logo {
+  animation: float 3s ease-in-out infinite;
+  display: inline-block; /* Ensure the image aligns properly */
+}
+
+/* Keyframes for floating effect */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Adjust for how much it moves up */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.center-div {
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+}
     </style>
 </head>
 <body>
@@ -36,8 +60,8 @@
   <div class="container">
     <div class="bgSquare"></div>
     <div class="entry-form" id="entry-form">
-      <div class="col-md-12">
-        <img class="logoForm" src="./assets/images/company-logo.jpg" alt="company logo">
+      <div class="col-md-12 center-div">
+        <img class="logoForm floating-logo" src="./assets/images/company-logo.jpg" alt="company logo">
       </div>
       
       <form action="https://script.google.com/macros/s/AKfycbwsG_udq5z9GwE1EcDvAN28280UN8aQ-EdSoIwJVglpW5VbCESV6OXuph5ayFTwQt_DGw/exec" method="POST" id="formValues">
