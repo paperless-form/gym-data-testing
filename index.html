@@ -88,7 +88,7 @@
       {
         $('.login-depend').append(`
           <div class="col-12 text-center my-3 d-flex justify-content-between">
-            <h3 class="text-white bg-theme px-3">Exercise: ${data[i][1] != "" ? data[i][1] : "<b>-</b>"}<input type="hidden" name="excercise_`+i+`" value="`+data[i][1]+`"></h3>
+            <h3 class="text-white bg-theme px-3">${data[i][1] != "" ? data[i][1] : "<b>-</b>"}<input type="hidden" name="excercise_`+i+`" value="`+data[i][1]+`"></h3>
             <h3 class="text-white bg-theme px-3">Sets: ${data[i][2] != "" ? data[i][2] : "<b>-</b>"}<input type="hidden" name="set_`+i+`" value="`+data[i][2]+`"></h3>
             <h3 class="text-white bg-theme px-3">Reps: ${data[i][3] != "" ? data[i][3] : "<b>-</b>"}<input type="hidden" name="rep_`+i+`" value="`+data[i][3]+`"></h3>
           </div>
