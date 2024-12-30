@@ -29,8 +29,10 @@
       }
 
       .floating-logo {
-  animation: float 3s ease-in-out infinite;
-  display: inline-block; /* Ensure the image aligns properly */
+        animation: float 3s ease-in-out infinite;
+  display: inline-block;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2); /* Adds 3D shadow effect */
+  border-radius: 50%;
 }
 
 /* Keyframes for floating effect */
@@ -231,14 +233,10 @@
               icon: "success",
             })
             .then(function () {
-                $('.empty-input ').val('');
-                $('.btn-submit').removeAttr('disabled');
-                $('.btn-submit').text('Submit');
+                window.location = window.location.href;
             });
             setTimeout(function () {
-                $('.empty-input ').val('');
-                $('.btn-submit').removeAttr('disabled');
-                $('.btn-submit').text('Submit');
+                window.location = window.location.href;
             }, 3000);
           } else {
             Swal.fire({
