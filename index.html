@@ -27,6 +27,9 @@
       .fw-b{
         font-weight: bold;
       }
+      .font-20{
+        font-size: 20px !important;
+      }
     </style>
 </head>
 <body>
@@ -95,9 +98,9 @@
         {
           $('.login-depend').append(`
             <div class="col-12 text-center my-3 d-flex">
-              <h3 class="text-white bg-theme px-3">${data[i][1] != "" ? data[i][1] : "<b>-</b>"}<input type="hidden" name="excercise_`+i+`" value="`+data[i][1]+`"></h3>
-              <h3 class="text-white bg-theme px-3">sets: ${data[i][2] != "" ? data[i][2] : "<b>-</b>"}<input type="hidden" name="set_`+i+`" value="`+data[i][2]+`"></h3>
-              <h3 class="text-white bg-theme px-3">reps: ${data[i][3] != "" ? data[i][3] : "<b>-</b>"}<input type="hidden" name="rep_`+i+`" value="`+data[i][3]+`"></h3>
+              <h4 class="font-20 px-3">${data[i][1] != "" ? data[i][1] : "<b>-</b>"}<input type="hidden" name="excercise_`+i+`" value="`+data[i][1]+`"></h4>
+              <h4 class="font-20 px-3">sets: ${data[i][2] != "" ? data[i][2] : "<b>-</b>"}<input type="hidden" name="set_`+i+`" value="`+data[i][2]+`"></h4>
+              <h4 class="font-20 px-3">reps: ${data[i][3] != "" ? data[i][3] : "<b>-</b>"}<input type="hidden" name="rep_`+i+`" value="`+data[i][3]+`"></h4>
             </div>
           `)
         } 
@@ -109,9 +112,9 @@
         if(data[i][4] == "exercise"){
           $('.login-depend').append(`
             <div class="col-12 text-center my-3 d-flex">
-              <h3 class="text-white bg-theme px-3">${data[i][1] != "" ? data[i][1] : "<b>-</b>"}<input type="hidden" name="excercise_`+i+`" value="`+data[i][1]+`"></h3>
-              <h3 class="text-white bg-theme px-3">sets: ${data[i][2] != "" ? data[i][2] : "<b>-</b>"}<input type="hidden" name="set_`+i+`" value="`+data[i][2]+`"></h3>
-              <h3 class="text-white bg-theme px-3">reps: ${data[i][3] != "" ? data[i][3] : "<b>-</b>"}<input type="hidden" name="rep_`+i+`" value="`+data[i][3]+`"></h3>
+              <h3 class="font-20 px-3">${data[i][1] != "" ? data[i][1] : "<b>-</b>"}<input type="hidden" name="excercise_`+i+`" value="`+data[i][1]+`"></h3>
+              <h3 class="font-20 px-3">sets: ${data[i][2] != "" ? data[i][2] : "<b>-</b>"}<input type="hidden" name="set_`+i+`" value="`+data[i][2]+`"></h3>
+              <h3 class="font-20 px-3">reps: ${data[i][3] != "" ? data[i][3] : "<b>-</b>"}<input type="hidden" name="rep_`+i+`" value="`+data[i][3]+`"></h3>
             </div>
           `)
           for(var j=0; j<data[i][2]; j++)
