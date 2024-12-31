@@ -28,6 +28,9 @@
       .fw-b{
         font-weight: bold;
       }
+      .fa:hover{
+        cursor: pointer;
+      }
     </style>
 </head>
 <body>
@@ -77,25 +80,18 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="">Exercises</label>
-                    <select class="form-control select2 exercises required empty-select" name="exercise">
-                        <option value="" selected disabled>Select option</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="">No. of sets</label>
-                    <input type="text" class="form-control no-of-set number required empty-input" name="no_of_set">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="">No. of reps</label>
-                    <input type="text" class="form-control no-of-reps number required empty-input" name="no_of_reps">
-                </div>
+            <div class="col-12">
+              <table class="form-tabel">
+                <thead>
+                    <tr>
+                        <th width="70%">Exercise</th>
+                        <th width="10%">Sets</th>
+                        <th width="10%">Reps</th>
+                        <th width="10%">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="products"></tbody>
+              </table>
             </div>
             <div class="col-12">
               <button type="button" class="btn btn-primary mt-3 btn-submit" disabled>Submit</button>
@@ -116,11 +112,51 @@
 <script src="assets/js/custom.js"></script>
 <script> 
 
+var excercise_option = ''
+
+function appendRow(excercise_option)
+{
+  $('.products').append(`
+    <tr>
+      <td>
+        <div>
+          <select class="form-control select2 exercises required empty-select" name="exercise">
+            <option value="" selected disabled>Select option</option>
+            `+excercise_option+`
+          </select>
+        </div>
+      </td>
+      <td>
+        <div>
+          <input type="text" class="form-control no-of-set number required empty-input" name="no_of_set">
+        </div>
+      </td>
+      <td>
+        <div>
+          <input type="text" class="form-control no-of-reps number required empty-input" name="no_of_reps">
+        </div>
+      </td>
+      <td>
+        <i class="fa fa-plus bg-success text-light p-1"></i>
+      </td>
+    </tr>
+  `)
+  $("select.select2-hidden-accessible").select2('destroy');
+  $('.select2').select2({
+    width: '100%'
+  });
+}
+
+$(document).on('click','.fa-trash',function(){
+  $(this).closest('tr').remove()
+})
+
 function appendData(exercises, users)
 {
+    excercise_option = ''
     for(var i=0; i<exercises.length; i++)
     {
-        $('.exercises').append('<option value="'+exercises[i][0]+'">'+exercises[i][0]+'</option>')
+        excercise_option += '<option value="'+exercises[i][0]+'">'+exercises[i][0]+'</option>'
     }
 
     for(var i=0; i<users.length; i++)
@@ -128,7 +164,15 @@ function appendData(exercises, users)
         $('.users').append('<option value="'+users[i][0]+'">'+users[i][0]+'</option>')
     }
 
+    appendRow(excercise_option)
+
 }
+
+$(document).on('click','.fa-plus',function(){
+  $(this).addClass('fa-trash bg-danger')
+  $(this).removeClass('fa-plus bg-success')
+  appendRow(excercise_option)
+})
 
   // check password
   $(document).on('click','.next-btn',function(e){ 
