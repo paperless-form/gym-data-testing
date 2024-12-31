@@ -80,6 +80,19 @@
                     </select>
                 </div>
             </div>
+            <div class="col-12 mb-3">
+              <table class="form-tabel">
+                <thead>
+                    <tr>
+                        <th width="70%">Mov / Preps</th>
+                        <th width="10%">Sets</th>
+                        <th width="10%">Reps</th>
+                        <th width="10%">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="mov-prep-tbody"></tbody>
+              </table>
+            </div>
             <div class="col-12">
               <table class="form-tabel">
                 <thead>
@@ -112,7 +125,7 @@
 <script src="assets/js/custom.js"></script>
 <script> 
 
-var excercise_option = ''
+var excercise_option = '', move_prep_option = ''
 
 function appendRow(excercise_option)
 {
@@ -137,7 +150,41 @@ function appendRow(excercise_option)
         </div>
       </td>
       <td>
-        <i class="fa fa-plus bg-success text-light p-1"></i>
+        <i class="fa fa-plus bg-success text-light p-1 add-exercise"></i>
+      </td>
+    </tr>
+  `)
+  $("select.select2-hidden-accessible").select2('destroy');
+  $('.select2').select2({
+    width: '100%'
+  });
+}
+
+
+function appendMovPrep(mov_preps)
+{
+  $('.mov-prep-tbody').append(`
+    <tr>
+      <td>
+        <div>
+          <select class="form-control select2 mov-prep required empty-select" name="mov_prep">
+            <option value="" selected disabled>Select option</option>
+            `+mov_preps+`
+          </select>
+        </div>
+      </td>
+      <td>
+        <div>
+          <input type="text" class="form-control no-of-set number required empty-input" name="no_of_set_mov_prep">
+        </div>
+      </td>
+      <td>
+        <div>
+          <input type="text" class="form-control no-of-reps number required empty-input" name="no_of_reps_mov_prep">
+        </div>
+      </td>
+      <td>
+        <i class="fa fa-plus bg-success text-light p-1 mov-prep-add"></i>
       </td>
     </tr>
   `)
@@ -151,12 +198,17 @@ $(document).on('click','.fa-trash',function(){
   $(this).closest('tr').remove()
 })
 
-function appendData(exercises, users)
+function appendData(exercises, users, mov_preps)
 {
-    excercise_option = ''
+    excercise_option = '', move_prep_option = ''
     for(var i=0; i<exercises.length; i++)
     {
         excercise_option += '<option value="'+exercises[i][0]+'">'+exercises[i][0]+'</option>'
+    }
+
+    for(var i=0; i<mov_preps.length; i++)
+    {
+      move_prep_option += '<option value="'+mov_preps[i][0]+'">'+mov_preps[i][0]+'</option>'
     }
 
     for(var i=0; i<users.length; i++)
@@ -165,13 +217,20 @@ function appendData(exercises, users)
     }
 
     appendRow(excercise_option)
+    appendMovPrep(move_prep_option)
 
 }
 
-$(document).on('click','.fa-plus',function(){
+$(document).on('click','.add-exercise',function(){
   $(this).addClass('fa-trash bg-danger')
-  $(this).removeClass('fa-plus bg-success')
+  $(this).removeClass('fa-plus bg-success add-exercise')
   appendRow(excercise_option)
+})
+
+$(document).on('click','.mov-prep-add',function(){
+  $(this).addClass('fa-trash bg-danger')
+  $(this).removeClass('fa-plus bg-success mov-prep-add')
+  appendMovPrep(move_prep_option)
 })
 
   // check password
@@ -195,7 +254,7 @@ $(document).on('click','.fa-plus',function(){
             if(response.result == "success"){
                 $('.login-depend').removeClass('d-none')
                 $('.login-form').addClass('d-none')
-                appendData(response.exercises, response.users)
+                appendData(response.exercises, response.users, response.mov_preps)
                 $('.btn-submit').removeAttr('disabled')
                 $('.check-user').val('no')
                 $('.logoForm').attr("src","./assets/images/company-logo.jpg")

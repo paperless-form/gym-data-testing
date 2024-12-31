@@ -87,28 +87,46 @@
     {
       $('.login-depend').empty()
       $('.login-depend').append(`
-      <h3 class="user-name">Rutima client `+data[0][0]+`</h3>`)
+      <h3 class="user-name">Rutima client `+data[0][0]+`</h3>
+      <h3 class="user-name">Mov / Preps</h3>`)
       for(var i=0; i<data.length; i++)
       {
-        $('.login-depend').append(`
-          <div class="col-12 text-center my-3 d-flex justify-content-between">
-            <h3 class="text-white bg-theme px-3">${data[i][1] != "" ? data[i][1] : "<b>-</b>"}<input type="hidden" name="excercise_`+i+`" value="`+data[i][1]+`"></h3>
-            <h3 class="text-white bg-theme px-3">sets: ${data[i][2] != "" ? data[i][2] : "<b>-</b>"}<input type="hidden" name="set_`+i+`" value="`+data[i][2]+`"></h3>
-            <h3 class="text-white bg-theme px-3">reps: ${data[i][3] != "" ? data[i][3] : "<b>-</b>"}<input type="hidden" name="rep_`+i+`" value="`+data[i][3]+`"></h3>
-          </div>
-        `)
-        for(var j=0; j<data[i][2]; j++)
+        if(data[i][4] == "mov / prep")
         {
           $('.login-depend').append(`
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label>w`+(parseInt(j)+1)+`</label>
-                <input class="form-control required number empty-input" name="w_`+i+`">
-              </div>
+            <div class="col-12 text-center my-3 d-flex">
+              <h3 class="text-white bg-theme px-3">${data[i][1] != "" ? data[i][1] : "<b>-</b>"}<input type="hidden" name="excercise_`+i+`" value="`+data[i][1]+`"></h3>
+              <h3 class="text-white bg-theme px-3">sets: ${data[i][2] != "" ? data[i][2] : "<b>-</b>"}<input type="hidden" name="set_`+i+`" value="`+data[i][2]+`"></h3>
+              <h3 class="text-white bg-theme px-3">reps: ${data[i][3] != "" ? data[i][3] : "<b>-</b>"}<input type="hidden" name="rep_`+i+`" value="`+data[i][3]+`"></h3>
             </div>
           `)
+        } 
+      }
+      $('.login-depend').append(`
+      <h3 class="user-name">Exercises</h3>`)
+      for(var i=0; i<data.length; i++)
+      {
+        if(data[i][4] == "exercise"){
+          $('.login-depend').append(`
+            <div class="col-12 text-center my-3 d-flex">
+              <h3 class="text-white bg-theme px-3">${data[i][1] != "" ? data[i][1] : "<b>-</b>"}<input type="hidden" name="excercise_`+i+`" value="`+data[i][1]+`"></h3>
+              <h3 class="text-white bg-theme px-3">sets: ${data[i][2] != "" ? data[i][2] : "<b>-</b>"}<input type="hidden" name="set_`+i+`" value="`+data[i][2]+`"></h3>
+              <h3 class="text-white bg-theme px-3">reps: ${data[i][3] != "" ? data[i][3] : "<b>-</b>"}<input type="hidden" name="rep_`+i+`" value="`+data[i][3]+`"></h3>
+            </div>
+          `)
+          for(var j=0; j<data[i][2]; j++)
+          {
+            $('.login-depend').append(`
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label>w`+(parseInt(j)+1)+`</label>
+                  <input class="form-control required number empty-input" name="w_`+i+`">
+                </div>
+              </div>
+            `)
+          }
+          count = parseInt(i)+1
         }
-        count = parseInt(i)+1
       }
 
       $('.login-depend').append(`
