@@ -56,12 +56,18 @@ input:read-only {
     .entry-form{
       position: relative;
       z-index: 1;
-      background: #fff;
       border-radius: 4px;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      background-color: #fff;
       padding: 30px;
       width: 70%;
       margin: 0 auto;
+      min-height: 30rem;
+    }
+    .bg-image{
+      background: url(/assets/images/owner.jpg);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
     }
     .bgSquare{
       background: #ee5023;
@@ -326,4 +332,8 @@ input:read-only {
     .active{
       color: green;
       font-size: 18px !important;
+    }
+
+    .formValues{
+      margin-top: 14rem;
     }

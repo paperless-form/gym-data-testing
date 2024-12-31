@@ -35,13 +35,14 @@
 <section class="entry-form-sec">
   <div class="container">
     <div class="bgSquare"></div>
-    <div class="entry-form" id="entry-form">
-      <div class="col-md-12">
-        <img class="logoForm" src="./assets/images/owner.jpg" alt="company logo">
+    <div class="entry-form bg-image" id="entry-form">
+      <div class="col-md-12 img-div d-none">
+        <img class="logoForm" src="" alt="company logo">
       </div>
       
-      <form action="https://script.google.com/macros/s/AKfycbwsG_udq5z9GwE1EcDvAN28280UN8aQ-EdSoIwJVglpW5VbCESV6OXuph5ayFTwQt_DGw/exec" method="POST" id="formValues">
+      <form action="https://script.google.com/macros/s/AKfycbwsG_udq5z9GwE1EcDvAN28280UN8aQ-EdSoIwJVglpW5VbCESV6OXuph5ayFTwQt_DGw/exec" class="formValues" method="POST" id="formValues">
         <div class="row login-form">
+          <div class="col-md-3"></div>
           <div class="col-md-6">
             <div class="mb-3">
               <label for="">Name</label>
@@ -50,14 +51,17 @@
               <input type="hidden" name="form_name" value="weight">
             </div>
           </div>
+          <div class="col-md-3"></div>
+          <div class="col-md-3"></div>
           <div class="col-md-6">
             <div class="mb-3">
               <label for="">Password</label>
               <input type="password" class="form-control password required" name="password">
             </div>
           </div>
+          <div class="col-md-3"></div>
           <div class="d-flex justify-content-end">
-            <div class="col-md-4">
+            <div class="col-md-4 col-12">
               <button type="button" class="btn btn-primary mt-3 next-btn">Next</button>
             </div>
           </div>
@@ -149,6 +153,9 @@
                 $('.btn-submit').removeAttr('disabled')
                 $('.check-user').val('no')
                 $('.logoForm').attr("src","./assets/images/company-logo.jpg")
+                $('.bg-image').removeClass('bg-image')
+                $('.formValues').removeClass('formValues')
+                $('.img-div').removeClass('d-none')
             }
             else if(response.result == "not match")
             {
