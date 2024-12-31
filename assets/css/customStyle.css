@@ -65,7 +65,7 @@ input:read-only {
       min-height: 30rem;
     }
     .bg-image{
-      background: url(/assets/images/owner.jpg);
+      background: url(../images/owner.jpg);
       background-repeat: no-repeat;
       background-size: 100% 100%;
     }
