@@ -103,7 +103,6 @@ $(document).ready(function(){
     // });
     d = new Date();
     today = addZero(d.getDate()) + '/' + addZero(d.getMonth()+1) + '/' + d.getFullYear()
-    $('.today').val(today)
     
     ref = d.getFullYear().toString().substr(-2) +''+ addZero(d.getDate())+''+ addZero(d.getMonth()+1)  +''+ addZero(d.getHours()) +''+ addZero(d.getMinutes())
     $('[name="order_ref"]').val(ref);

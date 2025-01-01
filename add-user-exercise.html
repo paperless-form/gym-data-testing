@@ -98,9 +98,10 @@
               <table class="form-tabel">
                 <thead>
                     <tr>
-                        <th width="70%">Exercise</th>
+                        <th width="60%">Exercise</th>
                         <th width="10%">Sets</th>
                         <th width="10%">Reps</th>
+                        <th width="10%">No. exercise</th>
                         <th width="10%">Action</th>
                     </tr>
                 </thead>
@@ -126,7 +127,7 @@
 <script src="assets/js/custom.js"></script>
 <script> 
 
-var excercise_option = '', move_prep_option = ''
+var excercise_option = '', move_prep_option = '', user_data = ''
 
 function appendRow(excercise_option)
 {
@@ -148,6 +149,11 @@ function appendRow(excercise_option)
       <td>
         <div>
           <input type="text" class="form-control no-of-reps number required empty-input" name="no_of_reps">
+        </div>
+      </td>
+      <td>
+        <div>
+          <input type="text" class="form-control no-of-exercise number required empty-input" name="no_of_exercise">
         </div>
       </td>
       <td>
@@ -220,8 +226,64 @@ function appendData(exercises, users, mov_preps)
 
     appendRow(excercise_option)
     appendMovPrep(move_prep_option)
-
 }
+
+$(document).on('change','.users',function(){
+  $('.mov-prep-tbody, .products').empty()
+  appendMovPrep(move_prep_option)
+  appendRow(excercise_option)
+
+  var flag = true, exercise_flag = true
+
+  for(var i=0; i<user_data.length; i++)
+  {
+    if($(this).find(":selected").val() == user_data[i][0])
+    {
+      if(user_data[i][4] == "mov / prep")
+      {
+        var tr = $('.mov-prep-tbody').find('tr:last')
+        tr.find('.mov-prep option[value="'+user_data[i][1]+'"]').prop('selected', true)
+        tr.find('.no-of-set').val(user_data[i][2])
+        tr.find('.no-of-reps').val(user_data[i][3])
+
+        $('.mov-prep-add').click()
+
+        flag = false
+      }
+    }
+  }
+  if(!flag)
+  {
+    $('.mov-prep-tbody').find('tr:last').remove()
+    $('.mov-prep-tbody').find('tr:last').find('.fa-trash').addClass('fa-plus bg-success mov-prep-add')
+    $('.mov-prep-tbody').find('tr:last').find('.fa-trash').removeClass('fa-trash bg-danger')
+  }
+
+  for(var i=0; i<user_data.length; i++)
+  {
+    if($(this).find(":selected").val() == user_data[i][0])
+    {
+      if(user_data[i][4] == "exercise")
+      {
+        var tr = $('.products').find('tr:last')
+        tr.find('.exercises option[value="'+user_data[i][1]+'"]').prop('selected', true)
+        tr.find('.no-of-set').val(user_data[i][2])
+        tr.find('.no-of-reps').val(user_data[i][3])
+        tr.find('.no-of-exercise').val(user_data[i][5])
+
+        $('.add-exercise').click()
+
+        exercise_flag = false
+      }
+    }
+  }
+  if(!exercise_flag)
+  {
+    $('.products').find('tr:last').remove()
+    $('.products').find('tr:last').find('.fa-trash').addClass('fa-plus bg-success add-exercise')
+    $('.products').find('tr:last').find('.fa-trash').removeClass('fa-trash bg-danger')
+  }
+})
 
 $(document).on('click','.add-exercise',function(){
   $(this).addClass('fa-trash bg-danger')
@@ -257,6 +319,7 @@ $(document).on('click','.mov-prep-add',function(){
                 $('.login-depend').removeClass('d-none')
                 $('.login-form').addClass('d-none')
                 appendData(response.exercises, response.users, response.mov_preps)
+                user_data = response.month_data
                 $('.btn-submit').removeAttr('disabled')
                 $('.check-user').val('no')
                 $('.logoForm').attr("src","./assets/images/company-logo.jpg")
