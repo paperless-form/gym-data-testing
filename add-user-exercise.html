@@ -72,6 +72,7 @@
             <h3>Add User Exercise</h3>
             <input type="hidden" name="form_name" value="user_exercise">
             <input type="hidden" class="check-user" name="check_user" value="yes">
+            <input type="hidden" name="type" value="owner">
             <div class="col-md-6">
                 <div class="mb-3">
                     <label for="">Users</label>
@@ -213,7 +214,8 @@ function appendData(exercises, users, mov_preps)
 
     for(var i=0; i<users.length; i++)
     {
-        $('.users').append('<option value="'+users[i][0]+'">'+users[i][0]+'</option>')
+        if(users[i][2] == "client")
+          $('.users').append('<option value="'+users[i][0]+'">'+users[i][0]+'</option>')
     }
 
     appendRow(excercise_option)
