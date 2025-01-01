@@ -85,6 +85,7 @@ function addDays(date, days) {
     date = date[1]+"/"+date[0]+"/"+date[2];
     var d = new Date(date);
     d.setDate(d.getDate() + days);
+    
     var new_date = addZero(d.getDate()) + '/' + addZero(d.getMonth()+1) + '/' + d.getFullYear();
     return new_date;
 }
@@ -103,7 +104,21 @@ $(document).ready(function(){
     // });
     d = new Date();
     today = addZero(d.getDate()) + '/' + addZero(d.getMonth()+1) + '/' + d.getFullYear()
-    
+    const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+    $('.month').append(months[d.getMonth()])
     ref = d.getFullYear().toString().substr(-2) +''+ addZero(d.getDate())+''+ addZero(d.getMonth()+1)  +''+ addZero(d.getHours()) +''+ addZero(d.getMinutes())
     $('[name="order_ref"]').val(ref);
 

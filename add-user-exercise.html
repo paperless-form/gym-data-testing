@@ -31,6 +31,9 @@
       .fa:hover{
         cursor: pointer;
       }
+      .no-of-set, .no-of-reps, .no-of-exercise{
+        min-width: 4rem;
+      }
     </style>
 </head>
 <body>
@@ -69,7 +72,7 @@
         </div>
         <div class="row login-depend d-none">
           
-            <h3>Add User Exercise</h3>
+            <h3>Add Routine for <span class="month"></span></h3>
             <input type="hidden" name="form_name" value="user_exercise">
             <input type="hidden" class="check-user" name="check_user" value="yes">
             <input type="hidden" name="type" value="owner">
@@ -85,17 +88,17 @@
               <table class="form-tabel">
                 <thead>
                     <tr>
-                        <th width="70%">Mov / Preps</th>
-                        <th width="10%">Sets</th>
-                        <th width="10%">Reps</th>
+                        <th width="50%">Mov / Preps</th>
+                        <th width="20%">Sets</th>
+                        <th width="20%">Reps</th>
                         <th width="10%">Action</th>
                     </tr>
                 </thead>
                 <tbody class="mov-prep-tbody"></tbody>
               </table>
             </div>
-            <div class="col-12">
-              <table class="form-tabel">
+            <div class="col-12 table-responsive">
+              <table class="form-tabel table">
                 <thead>
                     <tr>
                         <th width="60%">Exercise</th>
