@@ -30,6 +30,12 @@
       .font-20{
         font-size: 20px !important;
       }
+      .semi-dark-gray{
+        background-color: #4a4a4a;
+      }
+      .light-gray{
+        background-color: #989898;
+      }
     </style>
 </head>
 <body>
@@ -49,7 +55,7 @@
           <div class="col-md-6">
             <div class="mb-3">
               <label for="">Name</label>
-              <input class="form-control required" name="name">
+              <input class="form-control required user" name="name">
               <input type="hidden" class="check-user" name="check_user" value="yes">
               <input type="hidden" name="form_name" value="weight">
               <input type="hidden" name="type" value="client">
@@ -108,18 +114,9 @@
       $('.login-depend').empty()
       $('.login-depend').append(`
       <h3 class="user-name">Rutima client `+data[0][0]+`</h3>
-      <div class="col-12 mt-2">
-        <table class="form-tabel">
-          <thead>
-              <tr>
-                  <th colspan="3">Mov / Preps</th>
-              </tr>
-          </thead>
-        </table>
-      </div>
       <div class="col-12 my-3">
         <table class="form-tabel">
-          <thead>
+          <thead class="semi-dark-gray">
               <tr>
                   <th width="60%">Mov / Preps</th>
                   <th width="20%">Sets</th>
@@ -142,18 +139,26 @@
           `)
         } 
       }
+
+      $('.login-depend').append(`
+      <div class="col-12">
+        <table class="form-tabel">
+          <thead class="semi-dark-gray">
+              <tr>
+                  <th colspan="4">Exercise</th>
+              </tr>
+          </thead>
+        </table>
+      </div>
+      `)
+
       for(var i=0; i<data.length; i++)
       {
         if(data[i][4] == "exercise"){
           $('.login-depend').append(`
           <div class="col-12 my-3">
             <table class="form-tabel">
-              <thead>
-                  <tr>
-                      <th colspan="4">Exercise</th>
-                  </tr>
-              </thead>
-              <tbody class="exercise-tbody">
+              <tbody class="exercise-tbody light-gray">
                 <tr>
                   <th width="10%">${data[i][5] != "" ? data[i][5] : "<b>-</b>"}</th>
                   <th width="20%">${data[i][1] != "" ? data[i][1] : "<b>-</b>"}<input type="hidden" name="excercise_`+i+`" value="`+data[i][1]+`"></th>

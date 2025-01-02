@@ -253,7 +253,6 @@ input:read-only {
     .form-tabel th{
       position: sticky;
       top: -1px;
-      background-color: #566696;
       color:#fff;
       z-index: 9;
     }
