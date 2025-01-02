@@ -28,6 +28,10 @@ input:read-only {
     .bgSquare {
         max-width: 1200px;
     }
+
+    th{
+      font-size: 20px;
+    }
 }
 @media (min-width: 1200px){
     .bgSquare {
