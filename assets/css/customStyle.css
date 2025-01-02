@@ -102,7 +102,7 @@ input:read-only {
       padding-bottom: 6px;
     }
     .entry-form button, .btn:focus{
-      background-color: #566696;
+      background-color: #ee5023;
       font-weight: 500;
       font-size: 16px;
       height: 40px;
@@ -116,7 +116,7 @@ input:read-only {
       box-shadow: none;
     }
     .btn:active,.btn:hover{
-      background-color: #566696;
+      background-color: #d56647;
     }
     .customer-panel,.job-select-panel,.select-order-panel,.other-job-select-panel{
       display: none;
